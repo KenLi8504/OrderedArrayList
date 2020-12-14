@@ -34,17 +34,21 @@ public class OrderedArrayList <T extends Comparable <T> > extends NoNullArrayLis
      }
   }
 
-
-
   public void add(int index, T element){
     int newIndex = findindex(element);
     super.add(newIndex,element);
   }
 
   public T set(int index, T element){
-    T removedElement = super.get(index);
-    super.remove(index);
-    this.add(element);
-    return removedElement;
+    if (element == null){
+       throw new IllegalArgumentException("You can't have void values in OrderedArrayLists");
+    }
+    else{
+      T removedElement = super.get(index);
+      super.remove(index);
+      this.add(element);
+      return removedElement;
+    }
   }
+
 }
