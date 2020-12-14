@@ -1,19 +1,23 @@
 import java.util.ArrayList;
 public class OrderedArrayList <T extends Comparable <T> > extends NoNullArrayList <T>{
 
-  private int findindex(T element){
-    for (int i = 0; i < this.size;){
-      if (element.compareTo(this.get(i)) < 0){
-        i++
+  public OrderedArrayList (){
+    super();
+  }
+
+  public int findindex(T element){
+    for (int i = 0; i < super.size();){
+      if (element.compareTo(super.get(i)) > 0){
+        i++;
       }
       else{
         return i;
       }
     }
+    return super.size();
   }
 
-  public boolean add(T element){
-
+  /* public boolean add(T element){
   }
 
   public void add(int index, T element){
@@ -23,4 +27,5 @@ public class OrderedArrayList <T extends Comparable <T> > extends NoNullArrayLis
   public T set(int index, T element){
 
   }
+  */
 }
