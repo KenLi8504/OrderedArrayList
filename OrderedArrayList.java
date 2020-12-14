@@ -17,13 +17,20 @@ public class OrderedArrayList <T extends Comparable <T> > extends NoNullArrayLis
     return super.size();
   }
 
-  /* public boolean add(T element){
+   public boolean add(T element){
+     int newIndex = findindex(element);
+     super.add(newIndex,element);
+     return true;
   }
+
+
 
   public void add(int index, T element){
-
+    int newIndex = findindex(element);
+    super.add(newIndex,element);
   }
 
+/*
   public T set(int index, T element){
 
   }
