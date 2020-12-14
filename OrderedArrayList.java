@@ -4,8 +4,14 @@ public class OrderedArrayList <T extends Comparable <T> > extends NoNullArrayLis
   public OrderedArrayList (){
     super();
   }
+  public OrderedArrayList (int startingCapacity){
+    super(startingCapacity);
+  }
 
-  public int findindex(T element){
+  private int findindex(T element){
+    if (element == null){
+      throw new IllegalArgumentException("You can't have void values in OrderedArrayLists");
+    }
     for (int i = 0; i < super.size();){
       if (element.compareTo(super.get(i)) > 0){
         i++;
@@ -18,9 +24,14 @@ public class OrderedArrayList <T extends Comparable <T> > extends NoNullArrayLis
   }
 
    public boolean add(T element){
-     int newIndex = findindex(element);
-     super.add(newIndex,element);
-     return true;
+     if (element == null){
+       throw new IllegalArgumentException("You can't have void values in OrderedArrayLists");
+     }
+     else{
+       int newIndex = findindex(element);
+       super.add(newIndex,element);
+       return true;
+     }
   }
 
 
@@ -30,9 +41,10 @@ public class OrderedArrayList <T extends Comparable <T> > extends NoNullArrayLis
     super.add(newIndex,element);
   }
 
-/*
   public T set(int index, T element){
-
+    T removedElement = super.get(index);
+    super.remove(index);
+    this.add(element);
+    return removedElement;
   }
-  */
 }
